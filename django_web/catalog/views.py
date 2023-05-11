@@ -29,11 +29,24 @@ def index(request):
 from django.views import generic
 
 class BookListView(generic.ListView):
-    """Generic class-based view for a list of books."""
     model = Book
-    paginate_by = 10
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get the context
+        context = super(BookListView, self).get_context_data(**kwargs)
+        # Create any data and add it to the context
+        context['some_data'] = 'This is just some data'
+        return context
 
 class BookDetailView(generic.DetailView):
     """Generic class-based detail view for a book."""
     model = Book
+
+class AuthorListView(generic.ListView):
+    """Generic class-based list view for a list of authors."""
+    model = Author
+    paginate_by = 10
+
+class AuthorDetailView(generic.DetailView):
+    """Generic class-based detail view for an author."""
+    model = Author
