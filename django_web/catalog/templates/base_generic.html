@@ -12,8 +12,6 @@
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  <img src="{% static 'catalog/images/local_library_model_uml.png' %}" alt="UML diagram"
-    style="width:555px;height:540px;" />
 </head>
 
 <body>
@@ -24,7 +22,7 @@
         <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'books' %}">All books</a></li>
-          <li><a href="">All authors</a></li>
+          <li><a href="{% url 'authors' %}">All authors</a></li>
 
           {% if user.is_authenticated %}
           <li>User: {{ user.get_username }}</li>
